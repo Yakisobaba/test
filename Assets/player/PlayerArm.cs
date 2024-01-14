@@ -15,19 +15,21 @@ public class PlayerArm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(right) 
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButton(1))
             {
-
+                transform.eulerAngles += new Vector3(0,-10f,0);
             }
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
-
+                transform.eulerAngles += new Vector3(0, 10f, 0);
             }
         }
+        
     }
 }
