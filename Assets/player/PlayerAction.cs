@@ -68,14 +68,14 @@ public class PlayerAction : MonoBehaviour
         }
 
 
-        if (cursorLock)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else if (!cursorLock)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        //if (cursorLock)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
+        //else if (!cursorLock)
+        //{
+        //    Cursor.lockState = CursorLockMode.None;
+        //}
     }
 
     //äpìxêßå¿ä÷êîÇÃçÏê¨
