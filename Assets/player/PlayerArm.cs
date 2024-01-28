@@ -42,6 +42,10 @@ public class PlayerArm : MonoBehaviour
             transform.eulerAngles += new Vector3(0, a*3, 0);
             yield return new WaitForSeconds(0.13f/30);
         }
-
+        for (int i = 0; i < 30; i++)
+        {
+            transform.eulerAngles += new Vector3(0, a * -3, 0);
+            yield return new WaitForSeconds(0.13f / 30);
+        }
     }
 }
