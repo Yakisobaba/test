@@ -16,8 +16,8 @@ public class Button : MonoBehaviour
     
     void Start()
     {
-        startTransform.localScale = new Vector3(0.15f, 0.4f, 1f);
-        csTransform.localScale = new Vector3(0.15f, 0.4f, 1f);
+        startTransform.localScale = new Vector3(0.18f, 0.4f, 1f);
+        csTransform.localScale = new Vector3(0.18f, 0.4f, 1f);
         onStartButton = false;
         onCsButton = false;
     }
@@ -50,34 +50,43 @@ public class Button : MonoBehaviour
                 {
                     if (hitInfo.collider.CompareTag("StartButton"))
                     {
-                        Debug.Log("S押す");
-                        onStartButton = false;
+                        Debug.Log("S押す");  
                     }
-                    else if (hitInfo.collider.CompareTag("CsButton"))
-                    {
-                        Debug.Log("C押す");
-                        onCsButton = false;
-                    }
+                    onStartButton = false;
                 }
                 
             }
-            
+            if (onCsButton)
+            {
+                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hitInfo))//ray hitInfoタグがButton
+                {
+                    if (hitInfo.collider.CompareTag("CsButton"))
+                    {
+                        Debug.Log("C押す");
+                    }
+                    onCsButton = false;
+                }
+
+            }
+
         }
         if (onStartButton)
         {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider.CompareTag("StartButton"))//ray hitInfoタグがButton
             {
-                startTransform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                startTransform.localScale = new Vector3(0.15f, 0.37f, 1f);
             }
             else
             {
                 startTransform.localScale = new Vector3(0.18f, 0.4f, 1f);
+                onStartButton = false;
             }
         }
         else
         {
-            startTransform.localScale = new Vector3(0.18f, 0.18f, 1f);
+            startTransform.localScale = new Vector3(0.18f, 0.4f, 1f);
         }
 
         if (onCsButton)
@@ -85,16 +94,17 @@ public class Button : MonoBehaviour
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitInfo) && hitInfo.collider.CompareTag("CsButton"))//ray hitInfoタグがButton
             {
-                csTransform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                csTransform.localScale = new Vector3(0.15f, 0.37f, 1f);
             }
             else
             {
-                csTransform.localScale = new Vector3(0.18f, 0.18f, 1f);
+                csTransform.localScale = new Vector3(0.18f, 0.4f, 1f);
+                onCsButton = false;
             }
         }
         else
         {
-            csTransform.localScale = new Vector3(0.18f, 0.18f, 1f);
+            csTransform.localScale = new Vector3(0.18f, 0.4f, 1f);
         }
     }
 }
