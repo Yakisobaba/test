@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAction : MonoBehaviour
 {
+    [SerializeField]
+    int startMenu = 1;
     float x, z;
     float speed = 0.1f;
 
@@ -11,7 +13,7 @@ public class PlayerAction : MonoBehaviour
     Quaternion cameraRot, characterRot;
     float Xsensityvity = 3f, Ysensityvity = 3f;
 
-    bool cursorLock = true;
+    bool cursorLock = false;
 
     //ïœêîÇÃêÈåæ(äpìxÇÃêßå¿óp)
     float minX = -90f, maxX = 15f;
@@ -38,7 +40,6 @@ public class PlayerAction : MonoBehaviour
         cam.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
 
-
         UpdateCursorLock();
     }
 
@@ -47,15 +48,13 @@ public class PlayerAction : MonoBehaviour
         x = 0;
         z = 0;
 
-        x = Input.GetAxisRaw("Horizontal") * speed;
-        z = Input.GetAxisRaw("Vertical") * speed;
+        x = Input.GetAxisRaw("Horizontal") * speed * startMenu;
+        z = Input.GetAxisRaw("Vertical") * speed * startMenu;
 
         //transform.position += new Vector3(x,0,z);
 
         transform.position += cam.transform.forward * z + cam.transform.right * x;
     }
-
-
     public void UpdateCursorLock()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -66,6 +65,7 @@ public class PlayerAction : MonoBehaviour
         {
             cursorLock = true;
         }
+
 
 
         //if (cursorLock)
